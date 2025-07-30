@@ -5,87 +5,364 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Arin Gas – Gas & Galon Terpercaya</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
+    * {
       margin: 0;
       padding: 0;
-      color: #333333;
+      box-sizing: border-box;
     }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
     header {
-      background-color: #22ffed;
-      color: rgb(20, 1, 1);
-      padding: 20px;
+      background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%);
+      color: #2c3e50;
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    header h1 {
+      font-size: 3.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+    }
+    
+    header p {
+      font-size: 1.3em;
+      font-weight: 300;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      margin: 30px 20px;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+    
+    h2 {
+      color: #e74c3c;
+      font-size: 2em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .emoji {
+      font-size: 1.2em;
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      padding: 10px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    ul li {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      margin: 15px 0;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+    
+    ul li:hover {
+      transform: translateX(10px);
+    }
+    
+    ul li::before {
+      content: '✓';
+      margin-right: 10px;
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .whatsapp-section {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
       text-align: center;
     }
-    .products, .services, .contact, .testimonials, .promo {
-        background: gold;
-        margin: 20px;
-        padding: 20px;
-        border-radius: 30px;
+    
+    .whatsapp-section h2 {
+      color: white;
     }
-
-    h2 {
-      color: #ff5722;
+    
+    .whatsapp-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
     }
-    ul {
-      padding-left: 20px;
+    
+    .whatsapp-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 15px 30px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+    
+    .whatsapp-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+      text-decoration: none;
+    }
+    
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    
+    .promo-section {
+      background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    }
+    
+    .testimonials-section {
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+    }
+    
+    blockquote {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 25px;
+      border-radius: 15px;
+      font-style: italic;
+      font-size: 1.1em;
+      border-left: 5px solid #3498db;
+      margin-top: 20px;
+    }
+    
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .contact-item {
+      background: rgba(52, 152, 219, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
     footer {
       text-align: center;
-      padding: 10px;
-      background: #333;
+      padding: 30px;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
       color: white;
+      margin-top: 40px;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5em; }
+      .section { margin: 20px 10px; padding: 25px; }
+      .whatsapp-buttons { flex-direction: column; align-items: center; }
+      .floating-whatsapp { bottom: 20px; right: 20px; }
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="container">
+      <h1>Arin Gas</h1>
+      <p>Solusi Praktis Gas Elpiji & Galon Air Anda!</p>
+    </div>
+  </header>
 
-<header>
-  <h1>Arin Gas</h1>
-  <p>Solusi Praktis Gas Elpiji & Galon Air Anda!</p>
-</header>
+  <section class="section">
+    <h2><span class="emoji">🛒</span>Produk Kami</h2>
+    <ul>
+      <li>Gas Elpiji 3kg / 12kg / Bright Gas</li>
+      <li>Galon Air Mineral: Aqua, Cleo, dan lainnya</li>
+      <li>Regulator & Peralatan Gas</li>
+    </ul>
+  </section>
 
-<section class="products">
-  <h2>🛒 Produk Kami</h2>
-  <ul>
-    <li>Gas Elpiji 3kg / 12kg / Bright Gas</li>
-    <li>Galon Air Mineral: Aqua, Cleo, dan lainnya</li>
-    <li>Regulator & Peralatan Gas</li>
-  </ul>
-</section>
+  <section class="section">
+    <h2><span class="emoji">🚚</span>Layanan Antar Cepat</h2>
+    <p>Kami antar langsung ke rumah Anda di wilayah Tenayan Raya & sekitarnya. Gratis ongkir untuk pembelian tertentu!</p>
+  </section>
 
-<section class="services">
-  <h2>🚚 Layanan Antar Cepat</h2>
-  <p>Kami antar langsung ke rumah Anda di wilayah Tenayan Raya & sekitarnya. Gratis ongkir untuk pembelian tertentu!</p>
-</section>
+  <section class="section promo-section">
+    <h2><span class="emoji">🎁</span>Promo Bulan Ini</h2>
+    <ul>
+      <li>Beli 2 galon GRATIS 1 galon</li>
+      <li>Tukar tabung lama dengan harga spesial</li>
+    </ul>
+  </section>
 
-<section class="promo">
-  <h2>🎁 Promo Bulan Ini</h2>
-  <ul>
-    <li>Beli 2 galon GRATIS 1 galon</li>
-    <li>Tukar tabung lama dengan harga spesial</li>
-  </ul>
-</section>
+  <section class="section whatsapp-section">
+    <h2><span class="emoji">📱</span>Pesan Sekarang via WhatsApp</h2>
+    <p>Pilih produk yang Anda butuhkan dan pesan langsung melalui WhatsApp!</p>
+    <div class="whatsapp-buttons">
+      <a href="#" class="whatsapp-btn" onclick="orderGas()">
+        🔥 Pesan Gas Elpiji
+      </a>
+      <a href="#" class="whatsapp-btn" onclick="orderGalon()">
+        💧 Pesan Galon Air
+      </a>
+      <a href="#" class="whatsapp-btn" onclick="askInfo()">
+        ❓ Tanya Harga & Info
+      </a>
+    </div>
+  </section>
 
-<section class="contact">
-  <h2>📞 Hubungi Kami</h2>
-  <p>WhatsApp: <strong>[nomor Anda]</strong><br>
-     Lokasi: <strong>[alamat lengkap]</strong><br>
-     Jam Operasional: Senin – Minggu, 07.00 – 21.00
-  </p>
-</section>
+  <section class="section">
+    <h2><span class="emoji">📞</span>Hubungi Kami</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <h3>📱 WhatsApp</h3>
+        <p><strong>0812-3456-7890</strong></p>
+      </div>
+      <div class="contact-item">
+        <h3>📍 Lokasi</h3>
+        <p><strong>Tenayan Raya, Pekanbaru</strong></p>
+      </div>
+      <div class="contact-item">
+        <h3>🕒 Jam Operasional</h3>
+        <p><strong>Senin – Minggu<br>07.00 – 21.00</strong></p>
+      </div>
+    </div>
+  </section>
 
-<section class="testimonials">
-  <h2>💬 Testimoni Pelanggan</h2>
-  <blockquote>
-    "Pesan gasnya gampang dan cepat banget! Driver-nya ramah." – Ibu Lina, Tenayan Raya
-  </blockquote>
-</section>
+  <section class="section testimonials-section">
+    <h2><span class="emoji">💬</span>Testimoni Pelanggan</h2>
+    <blockquote>
+      "Pesan gasnya gampang dan cepat banget! Driver-nya ramah." – Ibu Lina, Tenayan Raya
+    </blockquote>
+    <blockquote>
+      "Harga bersaing dan pelayanan memuaskan. Recommended!" – Pak Budi, Tenayan
+    </blockquote>
+  </section>
 
-<footer>
-  &copy; 2025 Arin Gas. Semua hak dilindungi.
-</footer>
+  <!-- Floating WhatsApp Button -->
+  <a href="#" class="floating-whatsapp" onclick="openWhatsApp()" title="Chat WhatsApp">
+    <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.864 3.687"/>
+    </svg>
+  </a>
 
+  <footer>
+    <div class="container">
+      &copy; 2025 Arin Gas. Semua hak dilindungi.
+    </div>
+  </footer>
+
+  <script>
+    // WhatsApp phone number (replace with actual number)
+    const phoneNumber = '6282170607025'; // Format: country code + number without +
+    
+    function orderGas() {
+      const message = 'Halo Arin Gas! Saya ingin memesan gas elpiji. Mohon info harga dan ketersediaan.';
+      openWhatsAppWithMessage(message);
+    }
+    
+    function orderGalon() {
+      const message = 'Halo Arin Gas! Saya ingin memesan galon air mineral. Mohon info harga dan ketersediaan.';
+      openWhatsAppWithMessage(message);
+    }
+    
+    function askInfo() {
+      const message = 'Halo Arin Gas! Saya ingin bertanya tentang produk dan layanan Anda.';
+      openWhatsAppWithMessage(message);
+    }
+    
+    function openWhatsApp() {
+      const message = 'Halo Arin Gas! Saya tertarik dengan produk Anda.';
+      openWhatsAppWithMessage(message);
+    }
+    
+    function openWhatsAppWithMessage(message) {
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+    }
+    
+    // Add smooth scrolling animation
+    document.querySelectorAll('.section').forEach((section, index) => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(50px)';
+      
+      setTimeout(() => {
+        section.style.transition = 'all 0.6s ease';
+        section.style.opacity = '1';
+        section.style.transform = 'translateY(0)';
+      }, index * 200);
+    });
+  </script>
 </body>
 </html>
