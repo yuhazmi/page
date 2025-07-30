@@ -16,6 +16,7 @@
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: #333;
       line-height: 1.6;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="24" r="6" fill="%23007bff" opacity="0.8"/><rect x="14" y="4" width="4" height="16" fill="%23007bff" rx="2"/><circle cx="16" cy="8" r="3" fill="%23ffffff"/></svg>'), auto;
     }
     
     .container {
@@ -25,9 +26,9 @@
     }
     
     header {
-      background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%);
+      background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 50%, #667eea 100%);
       color: #2c3e50;
-      padding: 60px 0;
+      padding: 80px 0;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -40,23 +41,70 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-      opacity: 0.3;
+      background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.2) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                  linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.05) 50%, transparent 51%);
+      animation: headerShine 6s ease-in-out infinite;
+    }
+    
+    @keyframes headerShine {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
     }
     
     header h1 {
-      font-size: 3.5em;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      font-size: 4em;
+      margin-bottom: 15px;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
       position: relative;
       z-index: 1;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #2c3e50, #34495e, #2c3e50);
+      background-size: 200% 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGradient 3s ease-in-out infinite;
+    }
+    
+    @keyframes textGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
     
     header p {
-      font-size: 1.3em;
-      font-weight: 300;
+      font-size: 1.5em;
+      font-weight: 400;
       position: relative;
       z-index: 1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    
+    .header-features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .header-feature {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 15px 25px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+    }
+    
+    .header-feature:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
     
     .section {
@@ -187,8 +235,13 @@
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
     
-    .promo-section {
-      background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    .quality-section {
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: white;
+    }
+    
+    .quality-section h2 {
+      color: white;
     }
     
     .testimonials-section {
@@ -232,6 +285,8 @@
       .section { margin: 20px 10px; padding: 25px; }
       .whatsapp-buttons { flex-direction: column; align-items: center; }
       .floating-whatsapp { bottom: 20px; right: 20px; }
+      .header-features { gap: 15px; }
+      .header-feature { padding: 10px 20px; font-size: 1em; }
     }
   </style>
 </head>
@@ -240,6 +295,11 @@
     <div class="container">
       <h1>Arin Gas</h1>
       <p>Solusi Praktis Gas Elpiji & Galon Air Anda!</p>
+      <div class="header-features">
+        <div class="header-feature">🚚 Antar Gratis</div>
+        <div class="header-feature">⚡ Layanan Cepat</div>
+        <div class="header-feature">✅ Terpercaya</div>
+      </div>
     </div>
   </header>
 
@@ -247,21 +307,23 @@
     <h2><span class="emoji">🛒</span>Produk Kami</h2>
     <ul>
       <li>Gas Elpiji 3kg / 12kg / Bright Gas</li>
-      <li>Galon Air Mineral: Aqua, Cleo, dan lainnya</li>
+      <li>Galon Air Mineral: Vit</li>
       <li>Regulator & Peralatan Gas</li>
     </ul>
   </section>
 
   <section class="section">
     <h2><span class="emoji">🚚</span>Layanan Antar Cepat</h2>
-    <p>Kami antar langsung ke rumah Anda di wilayah Tenayan Raya & sekitarnya. Gratis ongkir untuk pembelian tertentu!</p>
+    <p>Kami antar langsung ke rumah Anda di wilayah Panam & sekitarnya. Gratis ongkir untuk pembelian tertentu!</p>
   </section>
 
-  <section class="section promo-section">
-    <h2><span class="emoji">🎁</span>Promo Bulan Ini</h2>
+  <section class="section quality-section">
+    <h2><span class="emoji">⭐</span>Mengapa Pilih Kami?</h2>
     <ul>
-      <li>Beli 2 galon GRATIS 1 galon</li>
-      <li>Tukar tabung lama dengan harga spesial</li>
+      <li>Produk original dan berkualitas terjamin</li>
+      <li>Pelayanan 24/7 siap melayani Anda</li>
+      <li>Driver berpengalaman dan terpercaya</li>
+      <li>Harga bersaing dengan kualitas terbaik</li>
     </ul>
   </section>
 
@@ -286,11 +348,11 @@
     <div class="contact-info">
       <div class="contact-item">
         <h3>📱 WhatsApp</h3>
-        <p><strong>0812-3456-7890</strong></p>
+        <p><strong>082170607025</strong></p>
       </div>
       <div class="contact-item">
         <h3>📍 Lokasi</h3>
-        <p><strong>Tenayan Raya, Pekanbaru</strong></p>
+        <p><strong>Jalan Melati Indah Panam</strong></p>
       </div>
       <div class="contact-item">
         <h3>🕒 Jam Operasional</h3>
@@ -324,7 +386,7 @@
 
   <script>
     // WhatsApp phone number (replace with actual number)
-    const phoneNumber = '6282170607025'; // Format: country code + number without +
+    const phoneNumber = '6281234567890'; // Format: country code + number without +
     
     function orderGas() {
       const message = 'Halo Arin Gas! Saya ingin memesan gas elpiji. Mohon info harga dan ketersediaan.';
@@ -342,7 +404,7 @@
     }
     
     function openWhatsApp() {
-      const message = 'Halo Arin Gas! Saya tertarik dengan produk Anda.';
+      const message = 'Halo Arin Gas! Saya mau pesan.';
       openWhatsAppWithMessage(message);
     }
     
